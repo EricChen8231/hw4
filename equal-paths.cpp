@@ -12,10 +12,23 @@ using namespace std;
 
 bool equalPaths(Node * root)
 {
-    if (root->left == nullptr && root->right == nullptr){
+    if (root == nullptr){
         return true;
     }
-    return equalPaths(root->left) == equalPaths(root->right)
+    int lheight = height(root->left);
+    int rheight = height(root->right);
+    if (lheight != rheight){
+        return false;
+    }
+    return equalPaths(root->left) && equalPaths(root->right);
+}
 
+int height(Node* root){
+    if (root == nullptr){
+        return 0;
+    }
+    int lheight = height(root->left);
+    int rheight = height(root->right);
+    return max(lheight, rheight) + 1;
 }
 
