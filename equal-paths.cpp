@@ -12,7 +12,10 @@ using namespace std;
 
 bool equalPaths(Node * root)
 {
-    // Add your code below
+    if (root->left == nullptr && root->right == nullptr){
+        return true;
+    }
+    return equalPaths(root->left) == equalPaths(root->right)
 
 }
 
