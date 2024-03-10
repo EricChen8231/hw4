@@ -8,27 +8,27 @@ using namespace std;
 
 
 // You may add any prototypes of helper functions here
-int height(Node *root);
+bool checkleaf(Node *root);
 
 bool equalPaths(Node * root)
 {
     if (root == nullptr){
         return true;
     }
-    int lheight = height(root->left);
-    int rheight = height(root->right);
-    if (lheight != rheight){
-        return false;
-    }
-    return equalPaths(root->left) && equalPaths(root->right);
+    
+    return checkleaf(root->left) && checkleaf(root->right);
 }
-
-int height(Node* root){
-    if (root == nullptr){
-        return 0;
+bool checkleaf(Node *root)
+{
+    if (root == nullptr)
+    {
+        return true;
     }
-    int lheight = height(root->left);
-    int rheight = height(root->right);
-    return max(lheight, rheight) + 1;
+
+    if (root->left == nullptr && root->right == nullptr)
+    {
+        return true; 
+    }
+    return checkLeafDistances(root->left) && checkLeafDistances(root->right);
 }
 
