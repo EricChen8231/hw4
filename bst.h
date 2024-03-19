@@ -653,17 +653,17 @@ bool BinarySearchTree<Key, Value>::balCheck(Node<Key, Value>* root) const {
   if (root == nullptr) {
     return true; 
   }
-  int diff = abs(height(root->left_) - height(root->right_));
+  int diff = abs(height(root->getLeft()) - height(root->getRight()));
   if (diff > 1) {
     return false; 
   }
   if (root->left_ != nullptr) {
-    if (!balCheck(root->left_)) {
+    if (!balCheck(root->getLeft())) {
       return false;
     }
   }
   if (root->right_ != nullptr) {
-    if (!balCheck(root->right_)) {
+    if (!balCheck(root->getRight())) {
       return false; 
     }
   }
@@ -676,8 +676,8 @@ int BinarySearchTree<Key, Value>::height(Node<Key, Value>* root) const
 		return 0;
 	}
 
-	int lheight = height(root->left_);
-	int rheight = height(root->right_);
+	int lheight = height(root->getLeft());
+	int rheight = height(root->getRight());
 	return std::max(lheight, rheight)+1;
 
 }
